@@ -1,0 +1,40 @@
+all: kernel/bearos programs_ linuxdisk.img 
+
+kernel/bearos: start_ lib_
+	(cd kernel ; make -f Makefile.linux ; cd ..)
+
+start_:
+	make -C start 
+
+lib_:
+	make -C lib
+
+libbearos_:
+	make -C libbearos
+
+programs_: start_ lib_ libbearos_
+	make -C programs 
+	make -C programs install
+
+linuxdisk.img: rootfs_
+	make -C programs install
+	dd if=/dev/zero of=linuxdisk.img bs=1M count=4
+	mformat -i linuxdisk.img -v EFIBOOT
+	mcopy -p -i linuxdisk.img files/* ::/
+
+rootfs_:
+	cp -vaux rootfs/* files
+
+installimage:
+	make -C programs install
+	dd if=/dev/zero of=linuxdisk.img bs=1M count=4
+	mformat -i linuxdisk.img -v EFIBOOT
+	mcopy -p -i linuxdisk.img files/* ::/
+
+clean:
+	make -C kernel clean
+	make -C start clean
+	make -C lib clean
+	make -C libbearos clean
+	make -C programs clean
+	rm -f linuxdisk.img

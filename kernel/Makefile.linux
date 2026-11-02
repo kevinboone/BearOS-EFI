@@ -1,0 +1,28 @@
+# Makefile for the Linux test harness for BearOS/EFI
+# Copyright (c)2026 Kevin Boone, GPLv3.0
+
+LIBC_INCS       = ../lib/include
+
+CFLAGS         = -g -fno-stack-protector -fpic \
+		  -fshort-wchar -Wall -DLINUX 
+
+LDFLAGS        = -pie
+
+# Work out the objects and sources from the src/ directory, rather than specifying
+#  them explicitly in the Makefile
+SOURCES        := $(sort $(shell find src/ -type f -name *.c))
+OBJECTS        := $(patsubst src/%,build/%,$(SOURCES:.c=.o))
+
+all: bearos 
+
+build/%.o: src/%.c
+	@mkdir -p build/
+	#gcc $(CFLAGS) -I $(LIBC_INCS) -MD -MF $(@:.o=.deps) -c -o $@ $< 
+	gcc $(CFLAGS) -MD -MF $(@:.o=.deps) -c -o $@ $< 
+
+bearos: $(OBJECTS) 
+	gcc $(LDFLAGS) -o bearos $(OBJECTS) 
+
+clean:
+	rm build/ bearos 
+

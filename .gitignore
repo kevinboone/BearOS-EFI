@@ -1,0 +1,11 @@
+*.swp
+dummy/
+files/
+img/
+lib/build
+libbearos/build
+linuxdisk.img
+programs/*/build
+programs/*/*.elf
+start/build
+spell*

@@ -1,0 +1,3 @@
+#!/bin/bosh
+/bin/sysmgr shutdown
+
