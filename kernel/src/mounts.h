@@ -37,7 +37,7 @@ extern struct FSOps *mounts_get_fsops_by_path (const UTF8 *path,
 extern char *mounts_get_text_form (void);
 
 extern int mounts_mount (const char *source, const char *target, const char *type,
-      unsigned long flags, const void *data);
+      unsigned long flags, const void *data, BOOL format);
 
 extern int mounts_umount_by_mount_point (UTF8 *mount_point);
 

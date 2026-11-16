@@ -10,5 +10,8 @@
 
 #pragma once
 
+// Program the kernel runs on boot
 #define DEFAULT_INIT "/bin/bosh"
 
+// Size of the temporary directory's filesystem, in bytes
+#define TMPDIR_SIZE (4096*1024)

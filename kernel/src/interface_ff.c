@@ -86,10 +86,40 @@ DRESULT disk_write (BYTE pdrv, const BYTE* buff, LBA_t sector, UINT count)
 
   disk_ioctl
 
+  So far as I can tell, FF only calls this function when doing f_mkfs(). 
+  Since (at present) we only do f_mkfs on a memory device, it's not a 
+  problem that some handler don't implement get_sector_count. But it will
+  be a problem in future.
+
 ============================================================================*/
 DRESULT disk_ioctl (BYTE pdrv, BYTE cmd, void* buff)
   {
-  return 0; // Probably more to do here
+  struct BlockOps *bo = interface_ff_get_blockops_for_drv (pdrv);
+  switch (cmd)
+    {
+    case CTRL_SYNC: 
+      {
+      return 0; // All our disk I/O is synchronous
+      }
+    case GET_SECTOR_COUNT: 
+      {
+      LBA_t *sz = (LBA_t *)buff;
+      if (bo->get_sector_count)
+        {
+        *sz = bo->get_sector_count (bo); 
+        return 0; 
+        }
+      else
+        return -1;
+      }
+    case GET_BLOCK_SIZE: 
+      {
+      LBA_t *sz = (LBA_t *)buff;
+      *sz = 512; // TODO
+      return 0; 
+      }
+    }
+  return -1; // Probably more to do here
   }
 
 

@@ -346,20 +346,36 @@ static int fatfshandler_mkdir (void *data, const UTF8 *path, int mode)
   fatfshandler_mount
 
 ============================================================================*/
-int fatfshandler_mount (FatFsHandler *self)
+int fatfshandler_mount (FatFsHandler *self, BOOL format)
   {
   int ret = 0;
 
   int pdrv = interface_ff_add_mapping (self->bops); 
   self->pdrv = pdrv;
   mysnprintf (self->fat_root, sizeof (self->fat_root), "%d:/", pdrv);
-  
-  int err = f_mount (self->fatfs, self->fat_root, 1);    
-  if (err)
+
+  if (format)
     {
-    kernelringbuffer_log (ERROR, "FAT f_mount() failed, error %d", err);
-    set_errno (interface_ff_fresult_to_errno (err));
-    ret = -1;
+    BYTE work[FF_MAX_SS];
+
+    int err = f_mkfs (self->fat_root, NULL, work, sizeof (work)); 
+    if (err)
+      {
+      kernelringbuffer_log (ERROR, "FAT f_mkfs() failed, error %d", err);
+      set_errno (interface_ff_fresult_to_errno (err));
+      ret = -1;
+      }
+    }
+  
+  if (ret == 0)
+    {
+    int err = f_mount (self->fatfs, self->fat_root, 1);    
+    if (err)
+      {
+      kernelringbuffer_log (ERROR, "FAT f_mount() failed, error %d", err);
+      set_errno (interface_ff_fresult_to_errno (err));
+      ret = -1;
+      }
     }
 
   return ret;

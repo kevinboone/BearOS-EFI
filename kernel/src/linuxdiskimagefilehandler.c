@@ -181,7 +181,7 @@ int linuxdiskimagefilehandler_prepare (LinuxDiskImageFileHandler *self)
 
 /*============================================================================
 
-  linuxdiskimagefilehandler_new
+  linuxdiskimage_filehandler_struct_close_and_cleanup
 
 ============================================================================*/
 int linuxdiskimage_file_handler_struct_close_and_cleanup (struct FileOps *fs)

@@ -241,10 +241,11 @@ int process_ioctl_fd (Process *self, int fd,
 ============================================================================*/
 void process_init_env (Process *self)
   {
-  self->envp = malloc (3 * sizeof (char*));
+  self->envp = malloc (4 * sizeof (char*));
   self->envp[0] = strdup ("PATH=/bin:/home/bin");
   self->envp[1] = strdup ("HOME=/home"); // TODO??
-  self->envp[2] = NULL; 
+  self->envp[2] = strdup ("TMP=/tmp"); 
+  self->envp[3] = NULL; 
   }
 
 

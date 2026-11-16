@@ -168,7 +168,7 @@ extern intptr_t mysyscall (BearosContext *context,
     const char *type = (const char*)arg3;
     unsigned long flags = arg4;
     void *data = (void *)arg5; 
-    ret = mounts_mount (source, target, type, flags, data);
+    ret = mounts_mount (source, target, type, flags, data, FALSE);
     }
   else if (number == BEAROS_SYSCALL_UMOUNT)
     {

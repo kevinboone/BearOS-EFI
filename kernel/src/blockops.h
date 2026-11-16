@@ -28,12 +28,15 @@ typedef ssize_t (*BlockOpsReadSectorsFn) (struct BlockOps *bs,
 typedef ssize_t (*BlockOpsWriteSectorsFn) (struct BlockOps *bs, 
         const void *buff, off_t offset, size_t num_sectors);
 
+typedef ssize_t (*BlockOpsSectorCountFn) (struct BlockOps *bs);
+
 struct BlockOps
  {
  void *data;
  int refs;
  BlockOpsReadSectorsFn read_sectors;
  BlockOpsWriteSectorsFn write_sectors;
+ BlockOpsSectorCountFn get_sector_count;
  };
 
 

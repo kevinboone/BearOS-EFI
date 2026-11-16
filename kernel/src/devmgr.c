@@ -24,6 +24,7 @@
 #include "compat_malloc.h"
 #include "compat_string.h"
 #include "compat_stdio.h"
+#include "defaults.h"
 #include "device.h"
 #include "devmgr.h"
 #include "../../lib/include/errno_numbers.h"
@@ -33,6 +34,7 @@
 #include "kernelringbuffer.h"
 #include "path.h"
 #include "procmgr.h"
+#include "tempimagefilehandler.h" 
 
 struct _DevMgr
   {
@@ -53,6 +55,8 @@ LinuxDiskImageFileHandler *ldifh = NULL;
 extern EFI_HANDLE efi_boot_dev_handle;
 EFIDiskImageFileHandler *edifh = NULL;
 #endif
+
+TempImageFileHandler *tifh = NULL;
 
 /*============================================================================
 
@@ -317,6 +321,19 @@ void devmgr_scan_storage (void)
   list_destroy (partition_list);
 
 #endif
+
+  tifh = tempimagefilehandler_new (TMPDIR_SIZE);
+  if (tempimagefilehandler_prepare (tifh) != 0)
+    {
+    write (2, "Can't initialize temp dir block device\n", 39);
+    return;
+    }
+
+  did = device_new ("tmpdir", 10, 1, S_IFBLK, 
+    (DevOpenAsFileFn)tempimagefilehandler_get_fileops, 
+      (DevOpenAsBlockFn)tempimagefilehandler_get_blockops, 
+         (DevCloseAndCleanupFn)tempimagefilehandler_close_and_cleanup, tifh);
+  devmgr_add_device (did);
   }
 
 

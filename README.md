@@ -1,6 +1,7 @@
 # BearOS/EFI
 
-Version 0.1a, November 2026
+Kernel version 0.1b, November 2026
+C library version 0.1a, November 2026
 
 *NOTE...*
 

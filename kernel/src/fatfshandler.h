@@ -27,7 +27,7 @@ extern void fatfshandler_destroy (FatFsHandler *self);
     The caller must store and free it -- it is dynamically generated. */
 extern struct FSOps *fatfshandler_get_fsops (FatFsHandler *self); 
 
-extern int fatfshandler_mount (FatFsHandler *self);
+extern int fatfshandler_mount (FatFsHandler *self, BOOL format);
 
 /** Create a new FAT handler on the block device defined by `bops`. 
     NOTE `bops` must be dynamically created, and this object will

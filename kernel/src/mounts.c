@@ -282,10 +282,11 @@ char *mounts_get_text_form (void)
 ============================================================================*/
 void mounts_init (void)
   {
-  kernelringbuffer_log (INFO, "Mounting core filesystems"); 
-  mounts_mount ("proc", BEAROS_PROC, "proc", 0, NULL);
-  mounts_mount ("dev", "/dev", "dev", 0, NULL);
-  mounts_mount ("/dev/root", "/", "vfat", 0, NULL);
+  kernelringbuffer_log (INFO, "Mounting core filesystems", FALSE); 
+  mounts_mount ("proc", BEAROS_PROC, "proc", 0, NULL, FALSE);
+  mounts_mount ("dev", "/dev", "dev", 0, NULL, FALSE);
+  mounts_mount ("/dev/tmpdir", "/tmp", "vfat", 0, NULL, TRUE);
+  mounts_mount ("/dev/root", "/", "vfat", 0, NULL, FALSE);
   }
 
 
@@ -295,7 +296,7 @@ void mounts_init (void)
 
 ============================================================================*/
 int mounts_mount (const char *source, const char *target, const char *type,
-      unsigned long flags, const void *data)
+      unsigned long flags, const void *data, BOOL format)
   {
   int ret = 0;
 
@@ -333,7 +334,7 @@ int mounts_mount (const char *source, const char *target, const char *type,
 	{
         PROC_BEGIN_SYNC
 	FatFsHandler *fatfs_handler = fatfshandler_new (ldbops); 
-        if (fatfshandler_mount (fatfs_handler) == 0)
+        if (fatfshandler_mount (fatfs_handler, format) == 0)
           {
 	  struct FSOps *fsops = fatfshandler_get_fsops (fatfs_handler);
 	  ret = mounts_add_mount (source, (UTF8 *)target, fsops);
