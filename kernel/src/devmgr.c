@@ -10,9 +10,9 @@
 
 #ifdef LINUX
 #else
-#include <efi/efi.h>
-#include <efi/efilib.h>
-#include "efiutil.h"
+#include <efi.h>
+#include <efilib.h>
+#include "efiutil.h" 
 #endif
 
 #ifdef LINUX

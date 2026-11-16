@@ -1,0 +1,7 @@
+build/shell.o: src/shell.c /usr/include/stdc-predef.h src/defs.h \
+ src/compat_stdio.h src/../../lib/include/stdint.h src/defaults.h \
+ src/elfloader.h src/list.h src/process.h src/fileops.h \
+ src/../../lib/include/stddef.h src/compat_stat.h src/compat_time.h \
+ src/../../lib/include/asm/time.h src/../../lib/include/asm/stat.h \
+ src/../../lib/include/asm/vfs.h src/../../lib/include/bearos/apidefs.h \
+ src/procmgr.h src/shell.h

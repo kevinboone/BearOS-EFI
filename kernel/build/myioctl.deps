@@ -1,0 +1,6 @@
+build/myioctl.o: src/myioctl.c /usr/include/stdc-predef.h \
+ src/../../lib/include/stddef.h src/myioctl.h src/process.h src/defs.h \
+ src/fileops.h src/../../lib/include/stdint.h src/compat_stat.h \
+ src/compat_time.h src/../../lib/include/asm/time.h \
+ src/../../lib/include/asm/stat.h src/../../lib/include/asm/vfs.h \
+ src/../../lib/include/bearos/apidefs.h

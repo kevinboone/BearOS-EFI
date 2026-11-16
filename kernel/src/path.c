@@ -9,8 +9,8 @@
 ============================================================================*/
 
 #ifndef LINUX
-#include <efi/efi.h>
-#include <efi/efilib.h>
+#include <efi.h>
+#include <efilib.h>
 #endif
 
 #include "defs.h" 

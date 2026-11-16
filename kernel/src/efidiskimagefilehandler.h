@@ -24,7 +24,7 @@
 #pragma once
 
 #ifndef LINUX
-#include <efi/efi.h>
+#include <efi.h>
 
 #include "fileops.h"
 

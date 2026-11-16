@@ -10,8 +10,8 @@
 
 #ifndef LINUX
 
-#include <efi/efi.h>
-#include <efi/efilib.h>
+#include <efi.h>
+#include <efilib.h>
 #include "datetimeutil.h" 
 #include "efiutil.h" 
 #include "compat_malloc.h" 

@@ -10,8 +10,8 @@
 
 #ifdef LINUX
 #else
-#include <efi/efi.h>
-#include <efi/efilib.h>
+#include <efi.h>
+#include <efilib.h>
 #include "defs.h"
 #endif
 

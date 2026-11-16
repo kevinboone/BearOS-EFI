@@ -1,0 +1,4 @@
+build/fileops.o: src/fileops.c /usr/include/stdc-predef.h src/fileops.h \
+ src/../../lib/include/stdint.h src/../../lib/include/stddef.h \
+ src/compat_stat.h src/compat_time.h src/../../lib/include/asm/time.h \
+ src/../../lib/include/asm/stat.h src/../../lib/include/asm/vfs.h

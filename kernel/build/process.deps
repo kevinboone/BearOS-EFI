@@ -1,0 +1,10 @@
+build/process.o: src/process.c /usr/include/stdc-predef.h \
+ src/compat_limits.h src/../../lib/include/limits.h src/compat_malloc.h \
+ src/defs.h src/compat_string.h src/compat_stdio.h \
+ src/../../lib/include/stdint.h src/consolefilehandler.h src/fileops.h \
+ src/../../lib/include/stddef.h src/compat_stat.h src/compat_time.h \
+ src/../../lib/include/asm/time.h src/../../lib/include/asm/stat.h \
+ src/../../lib/include/asm/vfs.h src/devmgr.h src/device.h src/blockops.h \
+ src/list.h src/../../lib/include/errno_numbers.h \
+ src/../../lib/include/bearos/apidefs.h src/path.h src/process.h \
+ src/procmgr.h src/syscall.h

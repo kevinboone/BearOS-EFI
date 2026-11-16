@@ -1,0 +1,9 @@
+build/textpseudofile.o: src/textpseudofile.c /usr/include/stdc-predef.h \
+ src/compat_limits.h src/../../lib/include/limits.h src/compat_malloc.h \
+ src/defs.h src/compat_string.h src/fileops.h \
+ src/../../lib/include/stdint.h src/../../lib/include/stddef.h \
+ src/compat_stat.h src/compat_time.h src/../../lib/include/asm/time.h \
+ src/../../lib/include/asm/stat.h src/../../lib/include/asm/vfs.h \
+ src/../../lib/include/errno_numbers.h src/process.h \
+ src/../../lib/include/bearos/apidefs.h src/procmgr.h \
+ src/textpseudofile.h

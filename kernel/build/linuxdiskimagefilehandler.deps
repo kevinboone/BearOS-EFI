@@ -1,0 +1,2 @@
+build/linuxdiskimagefilehandler.o: src/linuxdiskimagefilehandler.c \
+ /usr/include/stdc-predef.h

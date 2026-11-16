@@ -8,8 +8,11 @@
 
 ============================================================================*/
 
-#include <efi/efi.h>
-#include <efi/efilib.h>
+#ifndef LINUX
+#include <efi.h>
+#include <efilib.h>
+#endif
+
 #include "acpi.h"
 #include "defs.h"
 #include "../../lib/include/bearos/apidefs.h"

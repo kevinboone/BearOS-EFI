@@ -1,0 +1,9 @@
+build/compat_fcntl.o: src/compat_fcntl.c /usr/include/stdc-predef.h \
+ src/defs.h src/compat_fcntl.h ../lib/include/asm/fcntl.h \
+ src/compat_malloc.h src/compat_stdio.h src/../../lib/include/stdint.h \
+ src/fileops.h src/../../lib/include/stddef.h src/compat_stat.h \
+ src/compat_time.h src/../../lib/include/asm/time.h \
+ src/../../lib/include/asm/stat.h src/../../lib/include/asm/vfs.h \
+ src/../../lib/include/errno_numbers.h src/mounts.h src/fsops.h \
+ src/../../lib/include/asm/utime.h src/path.h src/process.h \
+ src/../../lib/include/bearos/apidefs.h src/procmgr.h

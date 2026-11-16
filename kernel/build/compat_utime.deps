@@ -1,0 +1,8 @@
+build/compat_utime.o: src/compat_utime.c /usr/include/stdc-predef.h \
+ src/../../lib/include/asm/time.h src/../../lib/include/errno_numbers.h \
+ src/compat_utime.h src/../../lib/include/asm/utime.h src/defs.h \
+ src/path.h src/compat_stat.h src/compat_time.h \
+ src/../../lib/include/stdint.h src/../../lib/include/asm/stat.h \
+ src/../../lib/include/asm/vfs.h ../lib/include/stddef.h src/mounts.h \
+ src/fsops.h src/fileops.h src/procmgr.h src/process.h \
+ src/../../lib/include/bearos/apidefs.h

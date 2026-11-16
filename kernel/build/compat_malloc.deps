@@ -1,0 +1,39 @@
+build/compat_malloc.o: src/compat_malloc.c /usr/include/stdc-predef.h \
+ /home/kevin/lib/gnu-efi-master/inc/efi.h \
+ /home/kevin/lib/gnu-efi-master/inc/x86_64/efibind.h \
+ ../lib/include/stdint.h ../lib/include/stddef.h \
+ /home/kevin/lib/gnu-efi-master/inc/eficompiler.h \
+ /home/kevin/lib/gnu-efi-master/inc/efidef.h \
+ /home/kevin/lib/gnu-efi-master/inc/efidevp.h \
+ /home/kevin/lib/gnu-efi-master/inc/efipciio.h \
+ /home/kevin/lib/gnu-efi-master/inc/efiprot.h \
+ /home/kevin/lib/gnu-efi-master/inc/eficon.h \
+ /home/kevin/lib/gnu-efi-master/inc/eficonex.h \
+ /home/kevin/lib/gnu-efi-master/inc/efiser.h \
+ /home/kevin/lib/gnu-efi-master/inc/efi_nii.h \
+ /home/kevin/lib/gnu-efi-master/inc/efipxebc.h \
+ /home/kevin/lib/gnu-efi-master/inc/efinet.h \
+ /home/kevin/lib/gnu-efi-master/inc/efiapi.h \
+ /home/kevin/lib/gnu-efi-master/inc/efifs.h \
+ /home/kevin/lib/gnu-efi-master/inc/efierr.h \
+ /home/kevin/lib/gnu-efi-master/inc/efiui.h \
+ /home/kevin/lib/gnu-efi-master/inc/efimp.h \
+ /home/kevin/lib/gnu-efi-master/inc/efiip.h \
+ /home/kevin/lib/gnu-efi-master/inc/efiudp.h \
+ /home/kevin/lib/gnu-efi-master/inc/efitcp.h \
+ /home/kevin/lib/gnu-efi-master/inc/efipoint.h \
+ /home/kevin/lib/gnu-efi-master/inc/efishell.h \
+ /home/kevin/lib/gnu-efi-master/inc/efilink.h \
+ /home/kevin/lib/gnu-efi-master/inc/efilib.h \
+ /home/kevin/lib/gnu-efi-master/inc/efidebug.h \
+ /home/kevin/lib/gnu-efi-master/inc/efipart.h \
+ /home/kevin/lib/gnu-efi-master/inc/x86_64/efilibplat.h \
+ /home/kevin/lib/gnu-efi-master/inc/legacy/efilib.h \
+ /home/kevin/lib/gnu-efi-master/inc/efirtlib.h \
+ /home/kevin/lib/gnu-efi-master/inc/efisetjmp.h \
+ /home/kevin/lib/gnu-efi-master/inc/efisetjmp_arch.h \
+ /home/kevin/lib/gnu-efi-master/inc/x86_64/efisetjmp_arch.h \
+ /home/kevin/lib/gnu-efi-master/inc/efistdarg.h \
+ /home/kevin/lib/gnu-efi-master/inc/pci22.h \
+ /home/kevin/lib/gnu-efi-master/inc/libsmbios.h src/defs.h \
+ src/compat_malloc.h src/compat_string.h

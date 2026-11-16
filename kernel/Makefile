@@ -6,21 +6,29 @@ include ../config.mak
 # Indicate where the gni-efi dev components are located. These settings
 #   are appropriate for Debian, but may need to be changed for other
 #   Linux variants
-EFI_LIB        = /usr/lib
-GNU_EFI_LIB    = /usr/lib
-EFI_LDS_BASE   = /usr/lib
-EFI_LDS        = $(EFI_LDS_BASE)/elf_$(ARCH)_efi.lds
-EFI_INCS       = /usr/include
-EFI_CRT_OBJS   = $(GNU_EFI_LIB)/crt0-efi-$(ARCH).o
-
-# For example, if you're using the source distribution of gnu-efi, these
-#   settings might be appropriate
-#EFI_LIB        = $(HOME)/lib/gnu-efi-master/x86_64/lib
-#GNU_EFI_LIB    = $(HOME)/lib/gnu-efi-master/x86_64/gnuefi
-#EFI_LDS_BASE   = $(HOME)/lib/gnu-efi-master/gnuefi
+#EFI_LIB        = /usr/lib
+#GNU_EFI_LIB    = /usr/lib
+#EFI_LDS_BASE   = /usr/lib
 #EFI_LDS        = $(EFI_LDS_BASE)/elf_$(ARCH)_efi.lds
-#EFI_INCS       = $(HOME)/lib/gnu-efi-master/inc 
+#EFI_INCS       = /usr/include
 #EFI_CRT_OBJS   = $(GNU_EFI_LIB)/crt0-efi-$(ARCH).o
+
+# Use gnu-efi source rather than repo
+# EFI_BASE is the location of the gnu-efi source
+# Derive the locations of all the libraries, headers, and build scripts from
+#   this base directory
+EFI_BASE       = $(HOME)/lib/gnu-efi-master
+
+EFI_BASE_ARCH  = $(EFI_BASE)/$(ARCH)
+EFI_LIB        = $(EFI_BASE_ARCH)/lib
+GNUEFI_LIB     = $(EFI_BASE_ARCH)/gnuefi
+EFI_CRT        = $(GNUEFI_LIB)/crt0-efi-$(ARCH).o
+EFI_LDS        = $(GNUEFI_LIB)/elf_$(ARCH)_efi.lds
+GNU_EFI_LIB    = $(HOME)/lib/gnu-efi-master/$(ARCH)/gnuefi
+EFI_LDS_BASE   = $(HOME)/lib/gnu-efi-master/gnuefi
+EFI_LDS        = $(EFI_LDS_BASE)/elf_$(ARCH)_efi.lds
+EFI_INCS       = $(HOME)/lib/gnu-efi-master/inc 
+EFI_CRT_OBJS   = $(GNU_EFI_LIB)/crt0-efi-$(ARCH).o
 
 LIB_INCS       = ../lib/include
 
@@ -65,9 +73,10 @@ build/kernel.so: $(OBJECTS)
 #  the EFI architecture we're building. We'll also pick out only the
 #  relevant sections, to keep the size under control
 build/bearos.efi: build/kernel.so
-	objcopy -j .text -j .sdata -j .data -j .dynamic \
-		-j .dynsym  -j .rel -j .rela -j .reloc \
-		--target=efi-app-$(ARCH) build/kernel.so build/bearos.efi 
+	objcopy -j .text -j .sdata -j .data -j .dynamic -j .rodata \
+          -j .rel -j .rela -j .rel.* -j .rela.* -j .rel* -j .rela* \
+          -j .areloc -j .reloc -O efi-app-$(ARCH) \
+          build/kernel.so build/bearos.efi 
 
 
 # Use xorriso to build an ISO9660 image that can be burned to a DVD or USB

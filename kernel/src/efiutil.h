@@ -10,8 +10,8 @@
 
 #ifndef LINUX
 
-#include <efi/efi.h>
-#include <efi/efilib.h>
+#include <efi.h>
+#include <efilib.h>
 #include "compat_time.h"
 
 /** Gets a device handle matching the device path. Why does gnu-efi not

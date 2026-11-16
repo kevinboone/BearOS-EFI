@@ -1,0 +1,3 @@
+build/ff.o: src/ff.c /usr/include/stdc-predef.h ../lib/include/string.h \
+ ../lib/include/stddef.h src/ff.h src/ffconf.h ../lib/include/stdint.h \
+ src/diskio.h

@@ -1,0 +1,4 @@
+build/kernellogmessage.o: src/kernellogmessage.c \
+ /usr/include/stdc-predef.h src/compat_time.h \
+ src/../../lib/include/asm/time.h src/compat_malloc.h src/defs.h \
+ src/compat_string.h src/kernellogmessage.h

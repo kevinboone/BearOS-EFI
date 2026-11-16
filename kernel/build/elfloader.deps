@@ -1,0 +1,11 @@
+build/elfloader.o: src/elfloader.c /usr/include/stdc-predef.h \
+ src/../../lib/include/stdint.h src/defs.h src/compat_elf.h \
+ src/compat_fcntl.h ../lib/include/asm/fcntl.h src/compat_malloc.h \
+ src/compat_stat.h src/compat_time.h src/../../lib/include/asm/time.h \
+ src/../../lib/include/asm/stat.h src/../../lib/include/asm/vfs.h \
+ ../lib/include/stddef.h src/compat_string.h src/compat_stdio.h \
+ src/compat_unistd.h src/compat_limits.h src/../../lib/include/limits.h \
+ src/elfloader.h src/list.h src/process.h src/fileops.h \
+ src/../../lib/include/bearos/apidefs.h \
+ src/../../lib/include/errno_numbers.h src/path.h src/procmgr.h \
+ src/syscall.h src/string8.h

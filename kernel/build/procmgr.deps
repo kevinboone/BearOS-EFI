@@ -1,0 +1,10 @@
+build/procmgr.o: src/procmgr.c /usr/include/stdc-predef.h src/defs.h \
+ src/compat_fcntl.h ../lib/include/asm/fcntl.h src/compat_malloc.h \
+ src/compat_string.h src/compat_stdio.h src/../../lib/include/stdint.h \
+ src/compat_unistd.h src/compat_limits.h src/../../lib/include/limits.h \
+ src/../../lib/include/stddef.h src/kernelringbuffer.h \
+ src/kernellogmessage.h src/compat_time.h \
+ src/../../lib/include/asm/time.h src/procmgr.h src/process.h \
+ src/fileops.h src/compat_stat.h src/../../lib/include/asm/stat.h \
+ src/../../lib/include/asm/vfs.h src/../../lib/include/bearos/apidefs.h \
+ src/elfloader.h src/list.h

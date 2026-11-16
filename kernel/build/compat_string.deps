@@ -1,0 +1,3 @@
+build/compat_string.o: src/compat_string.c /usr/include/stdc-predef.h \
+ src/compat_string.h src/defs.h src/compat_malloc.h \
+ src/../../lib/include/errno_numbers.h

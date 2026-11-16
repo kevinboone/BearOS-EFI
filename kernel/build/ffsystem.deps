@@ -1,0 +1,2 @@
+build/ffsystem.o: src/ffsystem.c /usr/include/stdc-predef.h src/ff.h \
+ src/ffconf.h ../lib/include/stdint.h

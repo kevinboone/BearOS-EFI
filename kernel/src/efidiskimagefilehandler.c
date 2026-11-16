@@ -11,8 +11,8 @@
 ============================================================================*/
 
 #ifndef LINUX
-#include <efi/efi.h>
-#include <efi/efilib.h>
+#include <efi.h>
+#include <efilib.h>
 #include "blockops.h"
 #include "compat_fcntl.h"
 #include "../../lib/include/errno_numbers.h"

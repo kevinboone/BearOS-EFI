@@ -1,0 +1,8 @@
+build/device.o: src/device.c /usr/include/stdc-predef.h \
+ src/compat_malloc.h src/defs.h src/compat_string.h src/device.h \
+ src/fileops.h src/../../lib/include/stdint.h \
+ src/../../lib/include/stddef.h src/compat_stat.h src/compat_time.h \
+ src/../../lib/include/asm/time.h src/../../lib/include/asm/stat.h \
+ src/../../lib/include/asm/vfs.h src/blockops.h \
+ src/../../lib/include/errno_numbers.h src/procmgr.h src/process.h \
+ src/../../lib/include/bearos/apidefs.h

@@ -1,0 +1,9 @@
+build/interface_ff.o: src/interface_ff.c /usr/include/stdc-predef.h \
+ src/../../lib/include/stdint.h src/../../lib/include/errno_numbers.h \
+ src/blockops.h src/../../lib/include/stddef.h src/compat_fcntl.h \
+ ../lib/include/asm/fcntl.h src/compat_time.h \
+ src/../../lib/include/asm/time.h src/datetimeutil.h src/defs.h \
+ src/interface_ff.h src/ff.h src/ffconf.h src/diskio.h src/procmgr.h \
+ src/process.h src/fileops.h src/compat_stat.h \
+ src/../../lib/include/asm/stat.h src/../../lib/include/asm/vfs.h \
+ src/../../lib/include/bearos/apidefs.h

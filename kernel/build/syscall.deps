@@ -1,0 +1,11 @@
+build/syscall.o: src/syscall.c /usr/include/stdc-predef.h src/defs.h \
+ src/../../lib/include/stddef.h src/../../lib/include/stdint.h \
+ ../lib/include/bearos/apidefs.h src/compat_fcntl.h \
+ ../lib/include/asm/fcntl.h src/compat_stdio.h src/compat_malloc.h \
+ src/compat_string.h src/compat_unistd.h src/compat_limits.h \
+ src/../../lib/include/limits.h src/compat_utime.h \
+ src/../../lib/include/asm/time.h src/../../lib/include/asm/utime.h \
+ src/../../lib/include/asm/vfs.h src/../../lib/include/errno_numbers.h \
+ src/mounts.h src/fsops.h src/fileops.h src/compat_stat.h \
+ src/compat_time.h src/../../lib/include/asm/stat.h src/myioctl.h \
+ src/process.h src/procmgr.h src/reboot.h

@@ -14,8 +14,8 @@
 #include "../../lib/include/stddef.h"
 ssize_t write (int fd, const void *buff, size_t n);
 #else
-#include <efi/efi.h>
-#include <efi/efilib.h>
+#include <efi.h>
+#include <efilib.h>
 #endif
 
 #include "compat_stdio.h"

@@ -10,8 +10,8 @@
 
 #ifdef LINUX
 #else
-#include <efi/efi.h>
-#include <efi/efilib.h>
+#include <efi.h>
+#include <efilib.h>
 EFI_HANDLE efi_boot_dev_handle;
 #endif
 
@@ -75,6 +75,7 @@ EFI_STATUS EFIAPI efi_main (EFI_HANDLE image_handle,
   {
   InitializeLib (image_handle, system_table);
 
+Print (L"hello10\n");
   EFI_LOADED_IMAGE *loaded_image = NULL;
   EFI_GUID lip_guid = EFI_LOADED_IMAGE_PROTOCOL_GUID;
   uefi_call_wrapper (BS->HandleProtocol, 3,
@@ -126,10 +127,15 @@ int main (int argc, char **argv)
   {
   global_boot_time = mytime (NULL);
 
+Print (L"hello1\n");
   kernelringbuffer_init();
   kernelringbuffer_log (INFO, "Starting");
 
+Print (L"hello\n");
+
   console_clear();
+
+Print (L"hello\n");
 
   devmgr_init();
   init_console();

@@ -13,8 +13,8 @@
 
 #ifndef LINUX
 
-#include <efi/efi.h>
-#include <efi/efilib.h>
+#include <efi.h>
+#include <efilib.h>
 #include "acpi.h" 
 #include "defs.h" 
 #include "../../lib/include/errno_numbers.h" 
