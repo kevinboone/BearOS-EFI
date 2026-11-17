@@ -1,3 +1,0 @@
-build/blockops.o: src/blockops.c /usr/include/stdc-predef.h \
- src/blockops.h src/../../lib/include/stdint.h \
- src/../../lib/include/stddef.h

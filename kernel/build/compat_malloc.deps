@@ -1,2 +1,0 @@
-build/compat_malloc.o: src/compat_malloc.c /usr/include/stdc-predef.h \
- src/compat_malloc.h src/defs.h src/compat_string.h

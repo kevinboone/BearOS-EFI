@@ -8,11 +8,13 @@
 
 #include <ctype.h>
 #include <errno.h>
+#include <fcntl.h>
 #include <limits.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdint.h>
 #include <string.h>
+#include <time.h>
 #include <bearos/apidefs.h>
 
 static int hexval (int c);
@@ -189,6 +191,74 @@ void *malloc (size_t size)
     BEAROS_SYSCALL_MALLOC, (intptr_t)size, 0, 0, 0, 0, 0);
   errno = bearos_context->_errno;
   return ret;
+  }
+
+
+/*============================================================================
+
+  make_into_string
+
+  Helper for mkstemp 
+
+============================================================================*/
+static void make_into_string (char * target_string, 
+        unsigned long current_value, char extra_char )
+  {
+  int i;
+
+  target_string[5] = extra_char;
+  for (i = 4; i >= 0; i--) 
+    {
+    target_string[i] = (char) ((current_value % 10) + '0'); 
+    current_value /= 10 ; 
+    }
+  }
+
+/*============================================================================
+
+  mkstemp 
+
+============================================================================*/
+#define MKTEMP_TEMPLATE        "XXXXXX"
+#define MAX_DIGITS_CONSTRAINT  10000
+
+int mkstemp (char *template)
+  {
+  static const char extra_char_list[] 
+    = "abcdefghijklmnopqrstuvwxyz0123456789_-" ;
+  size_t len ;
+  char *start_of_x;
+  int i;
+  int fd ;
+
+  len = strlen (template);
+  if ((len < 6) ||
+                strcmp( (start_of_x = template + len - 6), MKTEMP_TEMPLATE )) 
+    {
+    errno = EINVAL ;
+    return -1 ;
+    }
+
+  long initial_value = (long) (time( NULL ) % MAX_DIGITS_CONSTRAINT); 
+  long current_value = initial_value;
+  do 
+    {
+    for (i = 0; i < (int) (sizeof(extra_char_list) - 1); i++) 
+      {
+      make_into_string (start_of_x, current_value, extra_char_list[i]);
+      fd = open (template, O_CREAT | O_RDWR);
+      if (fd != -1) 
+        {
+        return fd ;
+        }
+      else if (errno != EEXIST) 
+        {
+        return -1 ;
+        }
+      }
+    current_value = (current_value + 1) % MAX_DIGITS_CONSTRAINT ;
+    } while (current_value != initial_value);
+  return -1 ;
   }
 
 

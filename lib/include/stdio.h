@@ -51,6 +51,7 @@ int     printf (const char *restrict fmt, ...);
 int     putc (int c, FILE *stream);
 int     puts (const char *s);
 int     snprintf (char *buff, size_t n, const char *restrict fmt, ...);
+FILE   *tmpfile (void);
 
 #define putchar(x) fputc(x,stdout)
 

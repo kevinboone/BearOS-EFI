@@ -1,4 +1,0 @@
-build/datetimeutil.o: src/datetimeutil.c /usr/include/stdc-predef.h \
- src/../../lib/include/stdint.h src/../../lib/include/errno_numbers.h \
- src/datetimeutil.h src/defs.h src/compat_time.h \
- src/../../lib/include/asm/time.h

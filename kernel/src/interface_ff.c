@@ -217,7 +217,7 @@ int interface_ff_fresult_to_errno (int fresult)
     case FR_NO_PATH: return ENOENT;
     case FR_INVALID_NAME: return EINVAL;
     case FR_DENIED: return EPERM;
-    case FR_EXIST: return EPERM;
+    case FR_EXIST: return EEXIST;
     case FR_INVALID_OBJECT: return EINVAL;
     case FR_WRITE_PROTECTED: return EROFS;
     case FR_INVALID_DRIVE: return EINVAL;

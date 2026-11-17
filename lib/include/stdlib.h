@@ -26,6 +26,7 @@ void          exit    (int status);
 void          free    (void *s);
 char         *getenv  (const char *name);
 void         *malloc  (size_t length); 
+int           mkstemp (char *template);
 void         *realloc (void *s, size_t length); 
 /** realpath() behaves as in Linux, and expects POSIX-style paths. This
     function can fail. If it does, it returns NULL, and sets errno. 

@@ -1,2 +1,0 @@
-build/efidiskimagefilehandler.o: src/efidiskimagefilehandler.c \
- /usr/include/stdc-predef.h

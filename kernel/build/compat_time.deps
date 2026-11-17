@@ -1,2 +1,0 @@
-build/compat_time.o: src/compat_time.c /usr/include/stdc-predef.h \
- src/compat_time.h src/../../lib/include/asm/time.h src/efiutil.h

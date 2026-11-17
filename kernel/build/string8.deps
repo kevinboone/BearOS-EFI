@@ -1,3 +1,0 @@
-build/string8.o: src/string8.c /usr/include/stdc-predef.h src/defs.h \
- src/string8.h src/list.h src/compat_stdio.h \
- src/../../lib/include/stdint.h src/compat_string.h src/compat_malloc.h

@@ -537,3 +537,44 @@ void stdio_cleanup (void)
   fflush (stderr); 
   }
 
+
+/*============================================================================
+
+  tmpfile 
+
+============================================================================*/
+FILE *tmpfile (void)
+  {
+  FILE *ret = NULL;
+  char filename[PATH_MAX];
+  char *tmpdir = getenv ("TMP");
+  if (!tmpdir) tmpdir = "/tmp";
+  strcpy (filename, tmpdir);
+  if (filename [strlen(filename) - 1] != '/')
+    strcat (filename, "/");
+  strcat (filename, "XXXXXX");
+  int fd = mkstemp (filename);
+  if (fd >= 0)
+    {
+    FILE *f = malloc (sizeof (FILE));
+    if (f)
+      { 
+      f->buff[0] = 0;
+      f->pos = 0;
+      f->error = 0;
+      f->eof = 0;;
+      f->fd = fd;
+      ret = f;
+      } 
+    else
+      errno = ENOMEM; 
+    }
+  else
+    {
+    // errno already set
+    }
+
+  return ret;
+  }
+
+

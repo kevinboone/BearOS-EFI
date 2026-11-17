@@ -1,2 +1,0 @@
-build/list.o: src/list.c /usr/include/stdc-predef.h src/compat_malloc.h \
- src/defs.h src/list.h

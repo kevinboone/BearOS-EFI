@@ -1,1 +1,0 @@
-build/efiutil.o: src/efiutil.c /usr/include/stdc-predef.h
